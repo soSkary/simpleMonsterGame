@@ -1,0 +1,59 @@
+SimpleMonsterGame 2.0
+
+Menu
+	Play game
+	Scoreboard
+	Quit
+
+Scorebard
+	Top 10
+	Name & Score
+
+Game
+	Move character and in menu with 'arrow-keys'
+	Enter to confirm, select
+	Escape to exit, go back
+
+	Move one square at a time
+	Turn-based
+	Static enemies visible on map
+	Rocks, bushes, trees & other obstacles on map
+	Win if all enemies slain, lose if you die
+
+	Character
+		HP
+		EXP
+		Victory Points
+		Weapon (one at a time)
+		Potions (max 3 at a time)
+		Healing? (only through potions, or also some other way?)
+	Enemies
+		Three types (orcs, skeletons & dragons)
+		Gives EXP & Victory Points when defeated
+		Can drop potion when defeated
+	Weapons
+		Can be found on the map? or dropped by monsters?
+		Does different amount of damage
+		Accuracy modifier?
+	
+	Combat
+		Player goes first
+			Fight
+			Drink potion
+			Run
+		Enemy always attacks
+		Throw dice if hit or miss
+		If hit, throw dice to check if critical(2x) , normal(1x) or graze(0.5x)
+		Throw dice to check if Run succesful (50/50)
+			If succesful, Player HP remains at current level, Enemy regains full HP
+			If unsuccesful, enemy turn and new prompt
+	Graphics
+		A background image (with grid?)
+		Different symbols for player, orc, skeleton, dragon, obstacles
+		Battle screen in a new window (Pokémon/FF style)
+		(Simple battle animations?)
+		Escape brings up a simple pause menu with stats
+			push 'q' to exit, any other to continue	
+			A counter to keep track of HP, items, victory points and EXP
+		
+
