@@ -1,34 +1,27 @@
-#include "program.h"
-#include "menu.h"
 #include "game.h"
+Game* game{ nullptr };
 
-#include <iostream>
-#include <stdexcept>
-
-static bool loop()
+int main(int argc, const char* argv[]) 
 {
-    static int gameResult;
-    switch ( menu::execute( gameResult ) )
+
+    const int FPS{ 60 };
+    const int frameDelay{ 1000 / FPS };
+
+    uint32_t frameStart;
+    int frameTime;
+
+
+    game = new Game();
+    game->init("MonsterGame", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+    while ( game->running() )
     {
-        case menu::GAME:
-            gameResult = game::run();
-            return true;
-        case menu::QUIT:
-            return false;
+        game->handleEvents();
+        game->update();
+        game->render();
     }
-    throw std::logic_error("Error in menu!");
-}
 
-int main ()
-try 
-{
-    program::start();
-    while ( loop() );
-    program::end();
+    game->clean();
+    
+
     return 0;
-}
-catch (std::exception& e)
-{
-    std::cerr << "Something went wrong!\n" << e.what() << '\n';
-    return 1;
 }

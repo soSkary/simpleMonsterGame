@@ -31,5 +31,22 @@
 *.out
 *.app
 
-# Project specific executables
+# Project build folder
+**/build
+
+# Project specific files and  executables
 monsterGame
+devGuide
+
+# Cmake
+CMakeLists.txt*
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
