@@ -1,3 +1,4 @@
+#include "collision.h"
 #include "game.h"
 #include "textureManager.h"
 #include "map.h"
@@ -11,6 +12,7 @@ SDL_Event Game::event;
 Manager manager;
 
 auto& player{ manager.addEntity() };
+auto& wall{ manager.addEntity() };
 
 Game::Game()
 {}
@@ -61,9 +63,14 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     }
     map = new Map();
 
-    player.addComponent<TransformComponent>( 300.0f, 300.0f );
+    player.addComponent<TransformComponent>( 2 );
     player.addComponent<SpriteComponent>("../../assets/player.png");
     player.addComponent<KeyboardController>();
+    player.addComponent<ColliderComponent>("wall");
+
+    wall.addComponent<TransformComponent>( 300.0f, 300.0f, 300, 20, 1);
+    wall.addComponent<SpriteComponent>( "../../assets/stonewall.png");
+    wall.addComponent<ColliderComponent>("wall");
 }
 
 void Game::handleEvents()
@@ -85,6 +92,11 @@ void Game::update()
 {
     manager.refresh();
     manager.update();
+
+    if(Collision::AABB( player.getComponent<ColliderComponent>().collider, wall.getComponent<ColliderComponent>().collider) )
+    {
+        player.getComponent<TransformComponent>().velocity * -1;
+    }
 }
 void Game::render()
 {
