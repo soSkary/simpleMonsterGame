@@ -38,6 +38,10 @@
 monsterGame
 devGuide
 **/assets
+.editorconfig
+
+#VS Code
+.vscode/**
 
 # Cmake
 CMakeLists.txt*
